@@ -24,5 +24,6 @@ jobs:
             rm -rf lugx_Gaming-CW
             git clone https://github.com/DivyanjaliTP/lugx_Gaming-CW.git
             cd lugx_Gaming-CW
+            export KUBECONFIG=$HOME/.kube/config
             kubectl apply -f lugx-k8s/
           '
