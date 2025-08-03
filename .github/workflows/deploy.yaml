@@ -10,18 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.4
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-    - name: Copy code and deploy on EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@3.85.29.25 '
-          cd lugx_Gaming-CW &&
-          git pull origin main &&
-          kubectl apply -f lugx-k8s/
-        '
+      - name: Copy code and deploy on EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@3.85.29.25 '
+            rm -rf lugx_Gaming-CW
+            git clone https://github.com/DivyanjaliTP/lugx_Gaming-CW.git
+            cd lugx_Gaming-CW
+            kubectl apply -f lugx-k8s/
+          '
