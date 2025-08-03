@@ -18,6 +18,11 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
+    - name: Add EC2 to known_hosts
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H 3.85.29.25 >> ~/.ssh/known_hosts
+
     - name: Deploy to Kubernetes via SSH
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@3.85.29.25 '
