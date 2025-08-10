@@ -49,3 +49,4 @@ jobs:
             kubectl scale deploy analytics-service-green --replicas=0 || true
 
             echo "Blue-Green deploy finished."
+
