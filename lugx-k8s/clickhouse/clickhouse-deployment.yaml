@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: clickhouse
-          image: yandex/clickhouse-server:latest
+          image: clickhouse/clickhouse-server:23.8
           ports:
             - containerPort: 8123
             - containerPort: 9000
@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: clickhouse-server
+  name: clickhouse
 spec:
   selector:
     app: clickhouse

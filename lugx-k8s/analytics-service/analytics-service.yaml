@@ -34,12 +34,11 @@ kind: Service
 metadata:
   name: analytics-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: analytics-service
   ports:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-      nodePort: 30003  # Optional static NodePort
 

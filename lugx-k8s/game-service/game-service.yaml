@@ -31,10 +31,9 @@ kind: Service
 metadata:
   name: game-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: game-service
   ports:
   - port: 8000
     targetPort: 8000
-    nodePort: 30001
